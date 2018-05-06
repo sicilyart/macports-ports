@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        gohugoio hugo 0.30.2 v
+github.setup        gohugoio hugo 0.40.2 v
 revision            0
 categories          www
 platforms           darwin
@@ -12,19 +12,19 @@ maintainers         nomaintainer
 description         A Fast and Flexible Static Site Generator built with love in GoLang
 long_description    ${description}
 
-checksums           rmd160  123ba1b7892fb676d731c6215d918d89bc1338cd \
-                    sha256  7a653978a340b916b80098443a56a9e5ccc675753e836922171add355edc186a
+checksums           rmd160  a360775303d5bb985592d8f0c19d8da79ec2aa52 \
+                    sha256  b30478150296798e4023f2daaa7c0deef6aa3e4248c8ad1f395f5451820f60f4
 
 depends_build-append port:git \
-                     port:govendor
+                     port:dep
 
 universal_variant   no
 
 worksrcdir          src/github.com/${github.author}/${github.project}
 
-configure.cmd       ${prefix}/bin/govendor
+configure.cmd       ${prefix}/bin/dep
 configure.pre_args  {}
-configure.args      sync
+configure.args      ensure
 configure.post_args {}
 configure.env       GOPATH=${workpath}
 
